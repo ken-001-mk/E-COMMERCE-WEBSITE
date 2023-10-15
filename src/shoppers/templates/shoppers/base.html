@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %} | Shoppers</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <nav class="px-6 py-6 flex justify-between items-center border-b border-gray-600">
+            <a href="/" class="text-3xl font-semibold">Shoppers</a>
+            <div class="flex-grow text-right px-4 py-2 m-2">
+                <!-- Add the toggle icon here -->
+                <button id="toggle-button" class="toggle-button bg-transparent border-none cursor-pointer">
+                    <i class="toggle-icon text-2xl"></i>
+                </button>
+                <!-- End of toggle icon -->
+                <a href="{%url 'cart:view_cart' %}" class="text-lg px-2 rounded hover:bg-gray-700">Cart</a>
+                <a href="{% url 'products:browse' %}" class="text-lg px-2 rounded hover:bg-gray-700">Search</a>
+                <a href="{% url 'products:new' %}" class="text-lg px-2 rounded hover:bg-gray-700">New products</a>
+
+                {% if request.user.is_authenticated%}
+                    <a href="#" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Inbox</a>
+                    <a href="{% url 'dashboard:index' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Dashboard</a>
+                    <a href="{% url 'shoppers:logout' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Logout</a>
+                {% else %}
+                    <a href="{% url 'shoppers:signup' %}" class="px-6 py-3 text-lg font-semibold bg-teal-500 text-white rounded-xl hover:bg-teal-700">Sign up</a>
+                    <a href="{% url 'shoppers:login' %}" class="px-6 py-3 text-lg font-semibold bg-gray-500 text-white rounded-xl hover:bg-gray-700">Login</a>
+                {% endif %}  
+            </div>
+        </nav>
+        <div class="px-6 py-6" >
+            {% block content %}
+            {% endblock %}
+        </div>
+        <!-- FOOTER -->
+        <footer class="px-6 py-6 flex-between bg-gray-800">
+            <div class="w-2/3 pr-10">
+                <h3 class="mb-5 font-semibold text-gray-400">About</h3>
+                <p class="text-lg text-gray-400 space-y-2">
+                    Welcome to the shoppers website where  every shoppers needs are met.
+                </p>
+            </div>
+            <div class="w-1/3">
+                <h3 class="mb-5 font-semibold text-gray-400">Menu</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-lg text-teal-500 hover:text-teal-700">About us</a></li>
+                    <li><a href="{% url 'shoppers:contact' %}" class="text-lg text-teal-500 hover:text-teal-700">Contact</a></li>
+                    <li><a href="{%url 'shoppers:terms' %}" class="text-lg text-teal-500 hover:text-teal-700">Terms & conditions</a></li>
+                    <li><a href="{% url 'shoppers:follow_us' %}" class="text-lg text-teal-500 hover:text-teal-700">Follow us</a></li>
+                </ul>
+            </div>
+        </footer>
+        <script>
+            const toggleButton = document.getElementById("toggle-button");
+            const toggleIcon = document.querySelector(".toggle-icon");
+        
+            let isToggled = false;
+        
+            toggleButton.addEventListener("click", () => {
+                isToggled = !isToggled;
+                if (isToggled) {
+                    // Code to handle the toggle ON state
+                    toggleIcon.classList.add("active");
+                    // Perform the necessary actions when the toggle is on
+                } else {
+                    // Code to handle the toggle OFF state
+                    toggleIcon.classList.remove("active");
+                    // Perform the necessary actions when the toggle is off
+                }
+            });
+        </script>        
+    </body>
+</html>

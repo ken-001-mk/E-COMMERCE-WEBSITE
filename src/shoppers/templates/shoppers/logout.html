@@ -1,0 +1,12 @@
+{% extends 'shoppers/base.html' %}
+
+{% block title %}Logout{% endblock %}
+
+{% block content %}
+    <p>Are you sure you want to logout?</p>
+
+    <form method="post" action="{% url 'shoppers:logout' %}">
+        {% csrf_token %}
+        <button class="py-4 px-7 text-lg bg-teal-500 hover:bg-teal-700 rounded-xl text-white">Logout</button>
+    </form>
+{% endblock %}

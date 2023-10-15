@@ -1,0 +1,29 @@
+{% extends 'shoppers/base.html' %}
+
+{% block title %}Terms{% endblock %}
+
+{% block content %}
+    <h1>Terms and Conditions</h1>
+    <section>
+        <h2>1. Acceptance of Terms</h2>
+        <p>By accessing and using this website, you agree to comply with and be bound by these Terms and Conditions and the Privacy Policy. If you do not agree to these terms, please do not use our website.</p>
+    </section>
+
+    <section>
+        <h2>2. Use of the Website</h2>
+        <p>2.1 You are granted a limited, non-exclusive, non-transferable license to access and use this website for personal or business purposes.</p>
+        <p>2.2 You agree not to engage in any unlawful activities, including but not limited to hacking, unauthorized access, or any actions that could harm the website's integrity or disrupt its operation.</p>
+    </section>
+
+    <!-- Include more sections and clauses specific to your business -->
+
+    <section>
+        <h2>3. Contact Information</h2>
+        <p><div class="text-lg text-teal-500 hover:text-violet-700 space-y-2"><a href="{% url 'shoppers:contact' %}">Contact us</a></div></p>
+        <p><div class="text-lg text-teal-500 hover:text-violet-700 space-y-2"><a href="{% url 'shoppers:follow_us' %}">Follow us</a></div></p>
+    </section>
+
+    <footer>
+        <p>These Terms and Conditions were last updated on 15th October 2023.</p>
+    </footer>
+{% endblock %}
