@@ -14,7 +14,6 @@ def view_cart(request):
 @login_required
 def add_to_cart(request, product_id):
     product = get_object_or_404(Product, pk=product_id)
-    product = product.objects.get(pk=product_id)
     cart, created = Cart.objects.get_or_create(user=request.user)
     
     try:
